@@ -6,6 +6,8 @@ import { themeContext } from "./context/ThemeContext";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Deck } from "./pages/Deck";
+import { Duel } from "./pages/Duel";
+import { Cards } from "./pages/Cards";
 
 function App() {
   const { isDarkTheme } = useContext(themeContext);
@@ -13,11 +15,12 @@ function App() {
   return (
     <>
       <ThemeProvider theme={isDarkTheme ? lightTheme : darkTheme}>
-        
         <Router>
           <Routes>
             <Route path="/" Component={Home} />
+            <Route path="/Cards" Component={Cards} />
             <Route path="/Deck" Component={Deck} />
+            <Route path="/Duel" Component={Duel} />
           </Routes>
         </Router>
       </ThemeProvider>

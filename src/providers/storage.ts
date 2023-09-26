@@ -29,6 +29,9 @@ export function checkCardBelongDeck(hero: Hero) {
 
 export function addCardToDeck(card: Hero) {
   const deck = getDeck();
+  if (deck.length >= 5) {
+    return alert("O seu deck está cheio!");
+  }
   !checkCardBelongDeck(card) && deck.push(card);
   saveDeck(deck);
 }

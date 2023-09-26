@@ -33,9 +33,11 @@ export default function HeroModal({ isOpen, handleModal, hero }: Props) {
       </HeaderModal>
       <Cover src={hero.images.lg} alt="" />
       <Name>{hero.biography.fullName}</Name>
-      <Description>{hero.biography.placeOfBirth}</Description>
-      <Description>{hero.biography.publisher}</Description>
-      <Description>{hero.biography.alignment}</Description>
+      <Description>Origem: {hero.biography.placeOfBirth === '-'? 'Desconhecida':hero.biography.placeOfBirth}</Description>
+      <Description>Universo: {hero.biography.publisher}</Description>
+      <Description>
+        {hero.biography.alignment === "good" ? "Herói" : "Vilão"}
+      </Description>
       <Description>{hero.biography.firstAppearance}</Description>
       <Description>{hero.biography.aliases}</Description>
       <Description>{hero.connections.groupAffiliation}</Description>

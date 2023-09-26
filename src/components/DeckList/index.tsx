@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Hero } from "../../interfaces/hero";
-import { Container } from "./styles";
+import { Button, Container, Content, Description } from "./styles";
 import { HeroCard } from "../HeroCard";
 import { getDeck } from "../../providers/storage";
 
@@ -13,9 +13,16 @@ export function DeckList() {
   }, []);
   return (
     <Container>
-      {heroList.map((hero) => (
-        <HeroCard hero={hero} />
-      ))}
+      {heroList.length === 0 ? (
+        <Content>
+          <Description>Adicione suas cartas preferidas e monte o seu deck</Description>
+          <Button onClick={() => (window.location.href = "/")}>
+            Ver Cartas
+          </Button>
+        </Content>
+      ) : (
+        heroList.map((hero) => <HeroCard hero={hero} />)
+      )}
     </Container>
   );
 }

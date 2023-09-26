@@ -1,22 +1,16 @@
 export default {
   colors: {
-    primary: "#0074D9",
-    secondary: "#FF4136",
+    primary: "#050639",
+    secondary: "#F79418",
+    tertiary : "#C12128",
     background: "#FFFFFF",
+    background2: "#cecece",
     text: "#333333",
-    textSecondary: "#666666",
-    border: "#CCCCCC",
-    borderSecondary: "#E5E5E5",
-    shadow: "rgba(0, 0, 0, 0.1)",
-    shadowSecondary: "rgba(0, 0, 0, 0.05)",
+    
     success: "#2ECC40",
-    successSecondary: "#7FDBFF",
-    danger: "#FF851B",
-    dangerSecondary: "#FFDC00",
+    danger: "#FF0000",
     warning: "#FFDC00",
-    warningSecondary: "#FF851B",
-    info: "#00BFFF",
-    infoSecondary: "#10E0ED",
+    info: "#FFFFFF",
 
     black: "#000000",
     white: "#FFFFFF",
@@ -29,6 +23,6 @@ export default {
     bronze1: "#CD7F32",
     bronze2: "#D2691E",
     bronze3: "#8B4513",
-    cardBg: "#171717",
+    cardBg: "#050639",
   },
 };

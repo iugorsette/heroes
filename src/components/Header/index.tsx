@@ -1,5 +1,14 @@
 import { useContext } from "react";
-import { Container, DarkIcon, LightIcon, Logo, ToggleButton } from "./styles";
+import {
+  Container,
+  DarkIcon,
+  LightIcon,
+  Logo,
+  LogoBg,
+  LogoSpan,
+  LogoTitle,
+  ToggleButton,
+} from "./styles";
 import { themeContext } from "../../context/ThemeContext";
 import { NavBar } from "../NavBar";
 
@@ -21,7 +30,10 @@ export function Header() {
     <>
       <Container>
         <Logo src={logo} alt="Hero App" onClick={goToMenu} />
-        <h1>Hero App</h1>
+        <LogoTitle>
+          Hero <LogoSpan>App</LogoSpan>
+          <LogoBg />
+        </LogoTitle>
         <ToggleButton onClick={toggleTheme}>
           {isDarkTheme ? <LightIcon /> : <DarkIcon />}
         </ToggleButton>

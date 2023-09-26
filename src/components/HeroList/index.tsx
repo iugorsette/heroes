@@ -7,11 +7,10 @@ import {
   FilterButton,
   SearchInput,
   FilterIcon,
-  FilterModal,
-  SelectOrderBy,
-  SelectOrderByOption,
+  ContentList,
 } from "./styles";
 import { HeroCard } from "../HeroCard";
+import { FilterList } from "../FilterList";
 
 export function HeroList() {
   const [orderByStats, setOrderByStats] = useState(false);
@@ -19,9 +18,19 @@ export function HeroList() {
   const [filteredList, setFilteredList] = useState<Hero[]>([]);
   const [heroList, setHeroList] = useState<Hero[]>([]);
 
+  
+
+  function handleShowOnlyHeroes(){
+    const filtered = heroList.filter((hero) => {
+      return hero.biography.alignment === "good";
+    });
+    setFilteredList(filtered);
+  }
+
   function handleFilterModal() {
     setIsFilterModalOpen(!isFilterModalOpen);
   }
+
   function search(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     if (value !== "") {
@@ -34,8 +43,8 @@ export function HeroList() {
     }
   }
 
+
   useEffect(() => {
-    console.log(orderByStats);
     getHeroList().then((res) => {
       setHeroList(res);
       if (orderByStats) {
@@ -58,28 +67,23 @@ export function HeroList() {
   }, [orderByStats]);
 
   return (
-    <>
+    <Container>
       <SearchContainer>
         <SearchInput type="text" placeholder="Search hero" onChange={search} />
         <FilterButton onClick={handleFilterModal}>
           <FilterIcon />
         </FilterButton>
       </SearchContainer>
-      {isFilterModalOpen && (
-        <FilterModal>
-          <SelectOrderBy
-            onChange={(event) => setOrderByStats(event.target.value === "true")}
-          >
-            <SelectOrderByOption value="true">Order by stats</SelectOrderByOption>
-            <SelectOrderByOption value="false">Order by name</SelectOrderByOption>
-          </SelectOrderBy>
-        </FilterModal>
-      )}
-      <Container>
+      <FilterList
+        isFilterModalOpen={isFilterModalOpen}
+        setOrderByStats={setOrderByStats}
+        handleShowOnlyHeroes={handleShowOnlyHeroes}
+      />
+      <ContentList>
         {filteredList.map((hero) => (
           <HeroCard hero={hero} />
         ))}
-      </Container>
-    </>
+      </ContentList>
+    </Container>
   );
 }

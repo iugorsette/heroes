@@ -1,4 +1,3 @@
-import { FunnelSimple } from "@phosphor-icons/react";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -9,87 +8,28 @@ export const Container = styled.div`
   margin-top: 1rem;
 `;
 
-export const SearchContainer = styled.div`
-  padding: 0 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-`;
-
-export const SearchInput = styled.input`
-  max-width: 500px;
-  padding: 0.5rem;
+export const Button = styled.button`
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.secondary};
   border: none;
+  font-size: 1.25rem;
+  padding: 0.50rem 2rem;
   border-radius: 0.25rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  &:focus {
-    outline: none;
+  cursor: pointer;
+  &:hover {
+    filter: brightness(0.9);
   }
 `;
 
-export const FilterButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  cursor: pointer;
+export const Description = styled.p`
+  color: ${({ theme }) => theme.colors.secondary};
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 `;
 
-export const FilterIcon = styled(FunnelSimple)`
-  width: 1.5rem;
-  height: 1.5rem;
-  cursor: pointer;
-`;
-
-export const FilterModal = styled.div`
+export const Content = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  cursor: pointer;
-`;
-
-export const FilterModalItem = styled.div`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.background};
-  color: ${({ theme }) => theme.colors.text};
-  border: none;
-  border-radius: 0.25rem;
-  padding: 0.5rem;
-  cursor: pointer;
+  gap: 0.5rem;
 `;
-
-
-export const SelectOrderBy = styled.select`
-  padding: 0.5rem;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  &:focus {
-    outline: none;
-  }
-`;
-
-export const SelectOrderByOption = styled.option`
-  padding: 0.5rem;
-  border: none;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  margin-bottom: 1rem;
-  &:focus {
-    outline: none;
-  }
-`;
-

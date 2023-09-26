@@ -12,7 +12,7 @@ export async function getHeroList(): Promise<Hero[]> {
 
   return data;
 }
-function getStatsSum (hero: Hero): number {
+function getStatsSum(hero: Hero): number {
   return Object.values(hero.powerstats).reduce((a, b) => a + b, 0);
 }
 
@@ -25,4 +25,22 @@ function calculateMaestry(hero: Hero): Maestry {
     return "Gold";
   }
   return "Bronze";
+}
+
+export async function makeRandonDeck() {
+  const deck: Hero[] = [];
+  for (let i = 0; i < 5; i++) {
+    deck.push(await getRandomHero());
+  }
+  return deck;
+}
+
+export async function getRandomHero(): Promise<Hero> {
+  const hero = await getHeroList().then((heroes) => {
+    const randomIndex = Math.floor(Math.random() * heroes.length);
+    return heroes[randomIndex];
+  });
+
+  return hero
+
 }

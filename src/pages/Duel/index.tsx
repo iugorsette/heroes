@@ -1,16 +1,17 @@
+
 import { useEffect } from "react";
-import { DeckList } from "../../components/DeckList";
 import { Header } from "../../components/Header";
 import { Container } from "./styles";
+import { DuelCard } from "../../components/DuelCard";
 
-export function Deck() {
+export function Duel() {
   useEffect(() => {
-    document.title = "Hero App - Decks";
+    document.title = "Hero App - Duel";
   }, []);
   return (
     <Container>
       <Header />
-      <DeckList />;
+      <DuelCard />
     </Container>
   );
 }

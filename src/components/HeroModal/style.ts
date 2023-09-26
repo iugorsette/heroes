@@ -5,7 +5,7 @@ import Modal from "react-modal";
 export const Container = styled(Modal)`
   ${({ theme }) => css`
     background-color: ${theme.colors.background};
-    color: ${theme.colors.text};
+    color: ${theme.colors.primary};
   `}
   width: 80%;
   height: 90%;
@@ -45,7 +45,6 @@ export const RemoveButton = styled.button`
   justify-content: center;
   align-items: center;
   background-color: ${({ theme }) => theme.colors.danger};
-  color: ${({ theme }) => theme.colors.black};
   border: none;
   border-radius: 0.25rem;
   padding: 0.5rem;
@@ -62,7 +61,7 @@ export const Cover = styled.img`
 export const CloseButton = styled(X)`
   ${({ theme }) => css`
     background-color: ${theme.colors.danger};
-    color: ${theme.colors.text};
+    color: ${theme.colors.secondary};
   `}
   border-radius: 0.25rem;
   padding: 0.5rem;
@@ -80,7 +79,7 @@ export const CloseButton = styled(X)`
 
 export const Title = styled.h1`
   ${({ theme }) => css`
-    color: ${theme.colors.white};
+    color: ${theme.colors.primary};
   `}
   margin: 0;
   padding: 0;
@@ -90,7 +89,7 @@ export const Title = styled.h1`
 
 export const Name = styled.h2`
   ${({ theme }) => css`
-    color: ${theme.colors.white};
+    color: ${theme.colors.primary};
   `}
   margin: 0;
   padding: 0;
@@ -100,7 +99,7 @@ export const Name = styled.h2`
 `;
 
 export const Description = styled.p`
-  color: ${({ theme }) => theme.colors.info};
+  color: ${({ theme }) => theme.colors.primary};
   margin: 0;
   padding: 0;
   font-size: 1rem;

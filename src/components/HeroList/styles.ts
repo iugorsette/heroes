@@ -6,7 +6,6 @@ export const Container = styled.div`
   padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
 `;
 
 export const ContentList = styled.div`

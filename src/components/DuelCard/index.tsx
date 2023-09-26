@@ -4,6 +4,7 @@ import {
   Container,
   DuelContainer,
   DuelTeam,
+  Result,
   SelectFighter,
   SelectFighterContainer,
   SelectFighterOption,
@@ -15,18 +16,20 @@ import { makeRandonDeck } from "../../providers/hero";
 import { Hero } from "../../interfaces/hero";
 import { HeroCard } from "../HeroCard";
 import { duelists } from "../../data/duelist";
+import { Loading } from "../Loading";
 
 export function DuelCard() {
   const [modalFight, setModalFight] = useState(true);
   const [duelistDeck, setDuelistDeck] = useState<Hero[]>([]);
   const [myDeck, setMyDeck] = useState<Hero[]>([]);
   const [duelist, setDuelist] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   function handleModalFight() {
     setModalFight(!modalFight);
   }
 
-  function calculateWinner () {
+  function calculateWinner() {
     const myDeckStats = myDeck.reduce((acc, curr) => {
       return acc + Number(curr.powerstats.combat);
     }, 0);
@@ -38,13 +41,14 @@ export function DuelCard() {
     if (myDeckStats > duelistDeckStats) {
       return "Você ganhou";
     } else if (myDeckStats < duelistDeckStats) {
-      return "Você perdeu";
+      return `${duelist} venceu`;
     } else {
       return "Empate";
     }
   }
 
   async function handleDuel(name: string) {
+    setIsLoading(true);
     const mydeck = getDeck();
 
     const duelistDeck = await makeRandonDeck();
@@ -53,32 +57,42 @@ export function DuelCard() {
     setDuelistDeck(duelistDeck);
     setMyDeck(mydeck);
     handleModalFight();
-
-    console.log(duelistDeck);
-    console.log(mydeck);
+    setIsLoading(false);
   }
 
   return (
     <Container>
-      <Title>Escolha seu oponente</Title>
+      {
+        <Title>
+          {modalFight ? "Escolha seu oponente" : "Resultado da batalha"}
+        </Title>
+      }
       {modalFight ? (
-        <SelectFighterContainer>
-          <SelectFighterOptionContainer>
-            {duelists.map((duelist) => (
-              <SelectFighterOption
-                key={duelist.name}
-                onClick={() => handleDuel(duelist.name)}
-              >
-                <SelectFighter src={duelist.image} alt={duelist.name} />
-                <h2>{duelist.name}</h2>
-              </SelectFighterOption>
-            ))}
-          </SelectFighterOptionContainer>
-        </SelectFighterContainer>
+        <>
+          {isLoading ? (
+            <Loading />
+          ) : (
+            <SelectFighterContainer>
+              <SelectFighterOptionContainer>
+                {duelists.map((duelist) => (
+                  <SelectFighterOption
+                    key={duelist.name}
+                    onClick={() => handleDuel(duelist.name)}
+                  >
+                    <SelectFighter src={duelist.image} alt={duelist.name} />
+                    <h2>{duelist.name}</h2>
+                  </SelectFighterOption>
+                ))}
+              </SelectFighterOptionContainer>
+            </SelectFighterContainer>
+          )}
+        </>
       ) : (
         <>
           <Button onClick={handleModalFight}>Voltar</Button>
-          <h1>{calculateWinner()}</h1>
+          <Result win={calculateWinner() === "Você ganhou"}>
+            <h1>{calculateWinner()}</h1>
+          </Result>
           <DuelContainer>
             <DuelTeam>
               <h2>Meu Deck</h2>

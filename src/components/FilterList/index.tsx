@@ -20,6 +20,8 @@ export function FilterList({
     <>
       {isFilterModalOpen && (
         <FilterModal>
+          <CheckBoxFilter  onChange={handleShowOnlyHeroes} />
+          <CheckBoxFilterLabel>Mostrar somente herois</CheckBoxFilterLabel>
           <SelectOrderBy
             onChange={(event) => setOrderByStats(event.target.value === "true")}
           >
@@ -30,11 +32,6 @@ export function FilterList({
               Order by name
             </SelectOrderByOption>
           </SelectOrderBy>
-          <CheckBoxFilterLabel>
-
-          Mostrar somente herois
-          </CheckBoxFilterLabel>
-          <CheckBoxFilter type="checkbox" onChange={handleShowOnlyHeroes} />
         </FilterModal>
       )}
     </>

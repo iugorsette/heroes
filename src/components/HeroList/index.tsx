@@ -11,16 +11,16 @@ import {
 } from "./styles";
 import { HeroCard } from "../HeroCard";
 import { FilterList } from "../FilterList";
+import { Loading } from "../Loading";
 
 export function HeroList() {
   const [orderByStats, setOrderByStats] = useState(false);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [filteredList, setFilteredList] = useState<Hero[]>([]);
   const [heroList, setHeroList] = useState<Hero[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  
-
-  function handleShowOnlyHeroes(){
+  function handleShowOnlyHeroes() {
     const filtered = heroList.filter((hero) => {
       return hero.biography.alignment === "good";
     });
@@ -43,9 +43,9 @@ export function HeroList() {
     }
   }
 
-
   useEffect(() => {
     getHeroList().then((res) => {
+      setIsLoading(false);
       setHeroList(res);
       if (orderByStats) {
         const sortedList = [...res].sort((a, b) => {
@@ -80,9 +80,15 @@ export function HeroList() {
         handleShowOnlyHeroes={handleShowOnlyHeroes}
       />
       <ContentList>
-        {filteredList.map((hero) => (
-          <HeroCard hero={hero} />
-        ))}
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            {filteredList.map((hero) => (
+              <HeroCard hero={hero} />
+            ))}
+          </>
+        )}
       </ContentList>
     </Container>
   );

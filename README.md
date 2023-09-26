@@ -1,27 +1,48 @@
-# React + TypeScript + Vite
+<img src="./public/hero-logo.svg" width="150px">
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Hero App
 
-Currently, two official plugins are available:
+>O projeto Hero App é um jogo de cartas que permite que você se transforme em um herói lendário e enfrente desafios épicos em duelos emocionantes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas:
 
-## Expanding the ESLint configuration
+- [React](https://pt-br.reactjs.org/)
+- [Styled Components](https://styled-components.com/)
+- [Phosphor Icons](https://phosphoricons.com/)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Como executar o projeto:
 
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+### Clone este repositório
+```bash
+$ git clone https://github.com/iugorsette/heroes.git
+```
+### Acesse a pasta do projeto no terminal/cmd
+```bash
+$ cd heroes
+```
+### Instale as dependências
+```bash
+$ npm install
+```
+### Execute a aplicação em modo de desenvolvimento
+```bash
+$ npm run dev
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Bem-vindo ao emocionante mundo do "Duelo de Heróis"!
+
+### Descrição do Jogo:
+
+"Duelo de Heróis" é um jogo de cartas fascinante que permite que você se transforme em um herói lendário e enfrente desafios épicos em duelos emocionantes.
+
+### Regras do Duelo:
+
+Você terá a oportunidade de montar um deck poderoso, composto por um máximo de 5 cartas, e usar esse deck para desafiar quatro oponentes distintos. Cada carta possui uma classificação de maestria, sendo ela ouro, prata ou bronze, além de atributos únicos, como inteligência, força, velocidade, resistência, destreza e poder.
+
+### Montando o Seu Deck:
+
+Sua jornada começa com a criação de um deck estratégico. Escolha sabiamente suas cartas para formar um time imbatível. Lembre-se de que a combinação certa de habilidades e maestria pode fazer toda a diferença em suas batalhas.
+
+### Objetivo do Jogo:
+
+Prepare-se para duelar, aprimorar suas habilidades, e conquistar a vitória contra adversários habilidosos. Ao vencer esses desafios, você estará um passo mais perto de se tornar o Herói Supremo. Agora é a sua hora de brilhar! Monte seu deck, explore suas habilidades e mergulhe em um mundo cheio de aventuras e estratégia em "Duelo de Heróis". A diversão está apenas começando!
